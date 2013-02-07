@@ -1,5 +1,5 @@
 {
-    "name": "educoder/pest",
+    "name": "richardkmiller/pest",
     "description": "A proper REST client for PHP.",
     "require": {
 
