@@ -8,10 +8,8 @@ class PersistentPest extends Pest
 	public function get($url) {
 		$success = false;
 		for ($i = 0 ; $i < 3 && !$success; $i++) {
-			echo "i $i\n";
 			try {
 				$result = parent::get($url);
-				echo "Success!\n";
 				$success = true;
 			}
 			catch(Exception $e) {
@@ -29,7 +27,6 @@ class PersistentPest extends Pest
 		for ($i = 0 ; $i < 3 && !$success; $i++) {
 			try {
 				$result = parent::put($url, $data);
-				echo "Success!\n";
 				$success = true;
 			}
 			catch(Exception $e) {
@@ -47,7 +44,6 @@ class PersistentPest extends Pest
 		for ($i = 0 ; $i < 3 && !$success; $i++) {
 			try {
 				$result = parent::post($url, $data);
-				echo "Success!\n";
 				$success = true;
 			}
 			catch(Exception $e) {
