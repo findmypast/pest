@@ -1,7 +1,10 @@
 {
     "name": "richardkmiller/pest",
     "description": "A proper REST client for PHP.",
+    "homepage": "https://github.com/richardkmiller/pest",
+    "license": "MIT",
     "require": {
-
+        "lib-curl": "*",
+        "php": ">=5.2"
     }
 }
