@@ -1,7 +1,5 @@
 <?php
 
-require_once( 'Pest.php' );
-
 class PersistentPest extends Pest
 {
 
