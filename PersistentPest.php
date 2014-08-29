@@ -2,7 +2,6 @@
 
 class PersistentPest extends Pest
 {
-
 	public $retries = 3;
 
 	public function get($url, $data = array(), $headers = array())
@@ -13,7 +12,7 @@ class PersistentPest extends Pest
 				$result = parent::get($url, $data, $headers);
 				$success = true;
 			}
-			catch(Exception $e) {
+			catch (Exception $e) {
 				$success = false;
 			}
 		}
@@ -31,7 +30,7 @@ class PersistentPest extends Pest
 				$result = parent::put($url, $data, $headers);
 				$success = true;
 			}
-			catch(Exception $e) {
+			catch (Exception $e) {
 				$success = false;
 			}
 		}
@@ -49,7 +48,7 @@ class PersistentPest extends Pest
 				$result = parent::post($url, $data, $headers);
 				$success = true;
 			}
-			catch(Exception $e) {
+			catch (Exception $e) {
 				$success = false;
 			}
 		}
@@ -58,6 +57,4 @@ class PersistentPest extends Pest
 		}
 		return $result;
 	}
-
 }
-
