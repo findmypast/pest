@@ -6,7 +6,7 @@
     "require": {
         "lib-curl": "*",
         "php": ">=5.2",
-        "educoder/pest": "dev-master@dev"
+        "educoder/pest": "1.0.0"
     },
     "autoload": {
         "classmap": [""]
