@@ -1,6 +1,6 @@
 {
     "name": "richardkmiller/pest",
-    "description": "A proper REST client for PHP.",
+    "description": "Brings some tenacity to educoder/pest",
     "homepage": "https://github.com/richardkmiller/pest",
     "license": "MIT",
     "require": {
