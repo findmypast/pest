@@ -1,25 +1,22 @@
-Pest
+PersistentPest
 ====
 
-**Pest** is a PHP client library for [RESTful](http://en.wikipedia.org/wiki/Representational_State_Transfer) 
-web services.
+**PersistentPest** brings some tenacity to [**Pest**](https://github.com/educoder/pest), an HTTP client library for PHP. If a given GET, PUT, or POST request fails, PersistentPest will retry up to 3 times.
 
-Unlike [Zend_Rest_Client](http://framework.zend.com/manual/en/zend.rest.client.html), which is not 
-really a "REST" client at all (more like RPC-over-HTTP), Pest supports the four REST verbs 
-(GET/POST/PUT/DELETE) and pays attention to HTTP response status codes.
 
 
 Basic Example
 -------------
 
-Pest's get/post/put/delete() return the raw response body as a string.
-See the info on PestXML (below) if you're working with XML-based REST services and
-PestJSON if you're working with JSON.
+To begin, see [Pest](https://github.com/educoder/pest)'s documentation.
+
+To make Pest persistent:
 
     <?php
-    require 'Pest.php';
+    require 'PersistentPest.php';
 
-    $pest = new Pest('http://example.com');
+    $pest = new PersistentPest('http://example.com');
+    $pest->retries = 7; // try these requests up to 7 times
 
     $thing = $pest->get('/things');
 
@@ -36,70 +33,11 @@ PestJSON if you're working with JSON.
     	)
     );
 
-    $pest->delete('/things/15');
-
-    ?>
-
-Responses with error status codes (4xx and 5xx) raise exceptions.
-
-    <?php
-
-    try {
-    	$thing = $pest->get('/things/18');
-    } catch (Pest_NotFound $e) {
-    	// 404
-    	echo "Thing with ID 18 doesn't exist!";
-    }
-
-    try {
-    	$thing = $pest->post('/things',  array('colour' => "Red"));
-    } catch (Pest_InvalidRecord $e) {
-    	// 422
-    	echo "Data for Thing is invalid because: ".$e->getMessage();
-    }
-
-    ?>
-
-PestXML
--------
-
-**PestXML** is an XML-centric version of Pest, specifically targeted at REST services that 
-return XML data. Rather than returning the raw response body as a string, PestXML will
-try to parse the service's response into a [SimpleXML](http://php.net/manual/en/book.simplexml.php) object.
-
-	<?php
-	require 'PestXML.php';
-
-	$pest = new Pest('http://example.com');
-
-	$things = $pest->get('/things.xml');
-
-	$colours = $things->xpath('//colour');
-	foreach($colours as $colour) {
-		echo $colour."\n";
-	}
-
-	?>
-
-Similarly, **PestJSON** is a JSON-centric version of Pest.
-
-Much more detailed examples are available in the `examples` directory:
-
-* [Rollcall Example](http://github.com/educoder/pest/blob/master/examples/rollcall_example.php)
-* [OpenStreetMap Example](http://github.com/educoder/pest/blob/master/examples/open_street_map_example.php)
-
-
-TODO
-----
-
-* Authentication
-* Follow Redirects
-
 
 License
 -------
 
-Copyright (C) 2011 by University of Toronto
+Copyright (C) 2013-2014 by Richard K. Miller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
